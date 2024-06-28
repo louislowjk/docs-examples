@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PayPal JS SDK Fastlane Integration</title>
+</head>
+
+<body>
+
+  <!-- Add a div where the watermark will be rendered -->
+  <div id="watermark-container"><img
+      src="https://www.paypalobjects.com/fastlane-v1/assets/fastlane-with-tooltip_en_sm_light.0808.svg" /></div>
+  <script src="https://www.paypal.com/sdk/js?client-id=<CLIENT-ID>&components=buttons,fastlane"
+    data-user-id-token="<SDK_CLIENT_TOKEN>" data-client-metadata-id="<CM_ID>">
+    </script>
+  <script src="app.js"></script>
+</body>
+
+</html>
