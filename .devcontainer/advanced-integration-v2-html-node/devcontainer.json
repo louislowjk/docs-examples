@@ -6,9 +6,9 @@
   // Use 'onCreateCommand' to run commands when creating the container.
   "onCreateCommand": "bash .devcontainer/advanced-integration-v2-html-node/welcome-message.sh",
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "chmod +x .devcontainer/update_settings.sh &&  .devcontainer/update_settings.sh && cd /workspaces/${localWorkspaceFolderBasename}/advanced-integration/v2/backend/node && npm install && cd /workspaces/${localWorkspaceFolderBasename}/advanced-integration/v2/frontend/html/client && npm install",
+  "postCreateCommand": "chmod +x .devcontainer/update_settings.sh && .devcontainer/update_settings.sh && chmod +x .devcontainer/post-commands.sh && .devcontainer/post-commands.sh post-create",
   // Use 'postAttachCommand' to run commands when attaching to the container.
-  "postAttachCommand": "cd /workspaces/${localWorkspaceFolderBasename}/advanced-integration/v2/backend/node && npm start & cd /workspaces/${localWorkspaceFolderBasename}/advanced-integration/v2/frontend/html/client && npm run start --no-analytics",
+  "postAttachCommand": "chmod +x .devcontainer/post-commands.sh && .devcontainer/post-commands.sh post-attach",
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   "forwardPorts": [3000, 8080],
   "portsAttributes": {
