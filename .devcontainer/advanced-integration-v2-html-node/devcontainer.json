@@ -1,19 +1,16 @@
 // For more details, see https://aka.ms/devcontainer.json.
 {
-  "name": "PayPal Advanced Integration (v2) - React + PHP",
-  "image": "mcr.microsoft.com/devcontainers/php:8",
+  "name": "PayPal Advanced Integration (v2) - React + Node",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   // Use 'onCreateCommand' to run commands when creating the container.
-  "onCreateCommand": "bash .devcontainer/advanced-integration-v2-react-php/welcome-message.sh",
+  "onCreateCommand": "bash .devcontainer/advanced-integration-v2-react-node/welcome-message.sh",
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "chmod +x .devcontainer/update_settings.sh && .devcontainer/update_settings.sh && cd /workspaces/${localWorkspaceFolderBasename}/advanced-integration/v2/backend && touch php/.env && cd php && composer install && cd /workspaces/${localWorkspaceFolderBasename}/advanced-integration/v2/frontend/react/client && npm install",
+  "postCreateCommand": "chmod +x .devcontainer/update_settings.sh &&  .devcontainer/update_settings.sh && cd /workspaces/${localWorkspaceFolderBasename}/advanced-integration/v2/backend/node && npm install && cd /workspaces/${localWorkspaceFolderBasename}/advanced-integration/v2/frontend/react/client && npm install",
   // Use 'postAttachCommand' to run commands when attaching to the container.
-  "postAttachCommand": "cd /workspaces/${localWorkspaceFolderBasename}/advanced-integration/v2/backend/php && php -S localhost:8080 -t public/ & cd /workspaces/${localWorkspaceFolderBasename}/advanced-integration/v2/frontend/react/client && npm run start --no-analytics",
+  "postAttachCommand": "cd /workspaces/${localWorkspaceFolderBasename}/advanced-integration/v2/backend/node && npm start & cd /workspaces/${localWorkspaceFolderBasename}/advanced-integration/v2/frontend/react/client && npm run start --no-analytics",
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  "forwardPorts": [
-    3000,
-    8080
-  ],
+  "forwardPorts": [3000, 8080],
   "portsAttributes": {
     "8080": {
       "label": "Preview of Advanced Checkout Flow",
@@ -34,7 +31,7 @@
     }
   },
   "containerEnv": {
-    "VISIBLE_FOLDER_SERVER": "php",
+    "VISIBLE_FOLDER_SERVER": "node",
     "VISIBLE_FOLDER_CLIENT": "react",
     "VISIBLE_FOLDER_PROJECT": "advanced-integration",
     "VISIBLE_FOLDER_VERSION": "v2"
@@ -44,7 +41,7 @@
       "extensions": [
         "vsls-contrib.codetour",
         "PayPal.vscode-paypal",
-        "xdebug.php-debug"
+        "dbaeumer.vscode-eslint"
       ],
       "settings": {
         "git.openRepositoryInParentFolders": "always"
