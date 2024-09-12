@@ -4,11 +4,11 @@
   "image": "mcr.microsoft.com/devcontainers/java:21",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   // Use 'onCreateCommand' to run commands when creating the container.
-  "onCreateCommand": "bash .devcontainer/advanced-integration-v2-react-java/welcome-message.sh",
+  "onCreateCommand": "bash .devcontainer/advanced-integration-v2-html-java/welcome-message.sh",
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "chmod +x .devcontainer/update_settings.sh &&  .devcontainer/update_settings.sh && cd /workspaces/${localWorkspaceFolderBasename}/advanced-integration/v2/backend && touch java/.env && cd java && mvn clean install && cd /workspaces/${localWorkspaceFolderBasename}/advanced-integration/v2/frontend/react/client && npm install",
+  "postCreateCommand": "chmod +x .devcontainer/update_settings.sh &&  .devcontainer/update_settings.sh && cd /workspaces/${localWorkspaceFolderBasename}/advanced-integration/v2/backend && touch java/.env && cd java && mvn clean install && cd /workspaces/${localWorkspaceFolderBasename}/advanced-integration/v2/frontend/html/client && npm install",
   // Use 'postAttachCommand' to run commands when attaching to the container.
-  "postAttachCommand": "cd /workspaces/${localWorkspaceFolderBasename}/advanced-integration/v2/backend/java && mvn spring-boot:run & cd /workspaces/${localWorkspaceFolderBasename}/advanced-integration/v2/frontend/react/client && npm run start --no-analytics",
+  "postAttachCommand": "cd /workspaces/${localWorkspaceFolderBasename}/advanced-integration/v2/backend/java && mvn spring-boot:run & cd /workspaces/${localWorkspaceFolderBasename}/advanced-integration/v2/frontend/html/client && npm run start --no-analytics",
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   "forwardPorts": [3000, 8080],
   "portsAttributes": {
@@ -17,7 +17,7 @@
       "onAutoForward": "openBrowserOnce"
     },
     "3000": {
-      "label": "React",
+      "label": "Html",
     }
   },
   "secrets": {
@@ -32,7 +32,7 @@
   },
   "containerEnv": {
     "VISIBLE_FOLDER_SERVER": "java",
-    "VISIBLE_FOLDER_CLIENT": "react",
+    "VISIBLE_FOLDER_CLIENT": "html",
     "VISIBLE_FOLDER_PROJECT": "advanced-integration",
     "VISIBLE_FOLDER_VERSION": "v2"
   },
