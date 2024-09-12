@@ -6,19 +6,18 @@
   // Use 'onCreateCommand' to run commands when creating the container.
   "onCreateCommand": "bash .devcontainer/advanced-integration-v2-react-node/welcome-message.sh",
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "chmod +x .devcontainer/update_settings.sh && .devcontainer/update_settings.sh && cd /workspaces/${localWorkspaceFolderBasename}/advanced-integration/v2/backend/node && npm install && cd /workspaces/${localWorkspaceFolderBasename}/advanced-integration/v2/frontend/react/client && npm install",
+  "postCreateCommand": "chmod +x .devcontainer/update_settings.sh &&  .devcontainer/update_settings.sh && cd /workspaces/${localWorkspaceFolderBasename}/advanced-integration/v2/backend/node && npm install && cd /workspaces/${localWorkspaceFolderBasename}/advanced-integration/v2/frontend/react/client && npm install",
   // Use 'postAttachCommand' to run commands when attaching to the container.
   "postAttachCommand": "cd /workspaces/${localWorkspaceFolderBasename}/advanced-integration/v2/backend/node && npm start & cd /workspaces/${localWorkspaceFolderBasename}/advanced-integration/v2/frontend/react/client && npm run start --no-analytics",
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  "forwardPorts": [3000, 3001],
+  "forwardPorts": [3000, 8080],
   "portsAttributes": {
-    "3000": {
-      "label": "Node",
+    "8080": {
+      "label": "Preview of Advanced Checkout Flow",
       "onAutoForward": "openBrowserOnce"
     },
-    "3001": {
-      "label": "Angular",
-      "onAutoForward": "openBrowserOnce"
+    "3000": {
+      "label": "React"
     }
   },
   "secrets": {
@@ -32,9 +31,10 @@
     }
   },
   "containerEnv": {
-    "VISIBLE_FOLDER_SERVER": "react",
-    "VISIBLE_FOLDER_CLIENT": "node",
-    "VISIBLE_FOLDER_DEVCONTAINER": "advanced-integration-v2-react-node"
+    "VISIBLE_FOLDER_SERVER": "node",
+    "VISIBLE_FOLDER_CLIENT": "react",
+    "VISIBLE_FOLDER_PROJECT": "advanced-integration",
+    "VISIBLE_FOLDER_VERSION": "v2"
   },
   "customizations": {
     "vscode": {
