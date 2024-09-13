@@ -119,9 +119,6 @@ for dir in "$SERVER_WORKSPACE"/*/ ; do
     fi
 done
 
-
-
-
 for dir in "$CLIENT_WORKSPACE"/*/ ; do
     dir_name=$(basename "$dir")
     if [ -d "$dir" ] && [ "$dir_name" != "$VISIBLE_FOLDER_CLIENT" ]; then

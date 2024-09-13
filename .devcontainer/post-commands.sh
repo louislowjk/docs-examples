@@ -10,7 +10,7 @@ VISIBLE_FOLDER_CLIENT="${VISIBLE_FOLDER_CLIENT}"
 VISIBLE_FOLDER_PROJECT="${VISIBLE_FOLDER_PROJECT}"
 VISIBLE_FOLDER_VERSION="${VISIBLE_FOLDER_VERSION}"
 
-# Set up directory paths
+# Set up SERVER_DIR & CLIENT_DIR
 if [ -z "$VISIBLE_FOLDER_VERSION" ]; then
     SERVER_DIR="${WORKSPACE_DIR}/${VISIBLE_FOLDER_PROJECT}/backend"
     CLIENT_DIR="${WORKSPACE_DIR}/${VISIBLE_FOLDER_PROJECT}/frontend/${VISIBLE_FOLDER_CLIENT}"
@@ -78,7 +78,6 @@ post_create() {
     echo "Running post-create commands..."
     setup_backend
     setup_frontend
-    echo "Post-create commands completed."
 }
 
 # Post-attach commands
@@ -86,7 +85,6 @@ post_attach() {
     echo "Running post-attach commands..."
     start_backend &
     start_frontend
-    echo "Post-attach commands completed."
 }
 
 # Main execution
