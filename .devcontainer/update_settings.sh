@@ -81,17 +81,19 @@ for dir in "$WORKSPACE_DIR"/*/ ; do
     fi
 done
 
-for dir in "$PROJECT_WORKSPACE"/*/ ; do
-    dir_name=$(basename "$dir")
-    if [ -d "$dir" ] && [ "$dir_name" != "$VISIBLE_FOLDER_VERSION" ]; then
-        if [ "$first" = true ] ; then
-            first=false
-        else
-            echo "," >> "$SETTINGS_FILE"
+if [ -n "$VISIBLE_FOLDER_VERSION" ]; then
+    for dir in "$PROJECT_WORKSPACE"/*/ ; do
+        dir_name=$(basename "$dir")
+        if [ -d "$dir" ] && [ "$dir_name" != "$VISIBLE_FOLDER_VERSION" ]; then
+            if [ "$first" = true ] ; then
+                first=false
+            else
+                echo "," >> "$SETTINGS_FILE"
+            fi
+            echo -n "    \"**/$VISIBLE_FOLDER_PROJECT/$dir_name\": true" >> "$SETTINGS_FILE"
         fi
-        echo -n "    \"**/$VISIBLE_FOLDER_PROJECT/$dir_name\": true" >> "$SETTINGS_FILE"
-    fi
-done
+    done
+fi
 
 for dir in "$DEVCONTAINER_WORKSPACE"/*/ ; do
     dir_name=$(basename "$dir")
