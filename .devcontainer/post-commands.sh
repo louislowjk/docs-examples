@@ -115,8 +115,8 @@ post_attach() {
     esac
 
     # Run backend and frontend in parallel
-    (cd $WORKSPACE_DIR/advanced-integration/v2/backend/$VISIBLE_FOLDER_SERVER && $backend_command) & \
-    (cd $WORKSPACE_DIR/advanced-integration/v2/frontend/$VISIBLE_FOLDER_CLIENT/client && $frontend_command)
+    (cd $SERVER_DIR && $backend_command) & \
+    (cd $CLIENT_DIR && $frontend_command)
 
     echo "Post-attach commands completed."
 }
