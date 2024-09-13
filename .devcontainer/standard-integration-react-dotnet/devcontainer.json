@@ -1,19 +1,19 @@
 // For more details, see https://aka.ms/devcontainer.json.
 {
-  "name": "PayPal Standard Integration (v2) - React + Dotnet",
+  "name": "PayPal Standard Integration - React + Dotnet",
   "image": "mcr.microsoft.com/devcontainers/dotnet:8.0",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   // Use 'onCreateCommand' to run commands when creating the container.
-  "onCreateCommand": "bash .devcontainer/advanced-integration-v2-react-dotnet/welcome-message.sh",
+  "onCreateCommand": "bash .devcontainer/standard-integration-react-dotnet/welcome-message.sh",
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "chmod +x .devcontainer/update_settings.sh &&  .devcontainer/update_settings.sh && cd /workspaces/${localWorkspaceFolderBasename}/advanced-integration/v2/backend/dotnet && dotnet restore  && cd /workspaces/${localWorkspaceFolderBasename}/advanced-integration/v2/frontend/react/client && npm install",
+  "postCreateCommand": "chmod +x .devcontainer/update_settings.sh && .devcontainer/update_settings.sh && chmod +x .devcontainer/post-commands.sh && .devcontainer/post-commands.sh post-create",
   // Use 'postAttachCommand' to run commands when attaching to the container.
-  "postAttachCommand": "cd /workspaces/${localWorkspaceFolderBasename}/advanced-integration/v2/backend/dotnet && dotnet run & cd /workspaces/${localWorkspaceFolderBasename}/advanced-integration/v2/frontend/react/client && npm run start --no-analytics",
+  "postAttachCommand": "chmod +x .devcontainer/post-commands.sh && .devcontainer/post-commands.sh post-attach",
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   "forwardPorts": [3000, 8080],
   "portsAttributes": {
     "8080": {
-      "label": "Preview of Advanced Checkout Flow",
+      "label": "Preview of Standard Checkout Flow",
       "onAutoForward": "openBrowserOnce"
     },
     "3000": {
