@@ -115,7 +115,7 @@ post_attach() {
     esac
 
     # Run backend and frontend in parallel
-    (cd $SERVER_DIR && $backend_command) & \
+    (cd $SERVER_DIR/$VISIBLE_FOLDER_SERVER && $backend_command) & \
     (cd $CLIENT_DIR && $frontend_command)
 
     echo "Post-attach commands completed."
